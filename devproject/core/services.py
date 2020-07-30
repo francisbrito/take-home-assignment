@@ -1,3 +1,5 @@
+import json
+
 from django.conf import settings
 from django.utils import timezone
 from github import (
@@ -95,7 +97,7 @@ def _parse_get_repository_response(response: GithubRepository) -> dict:
         "name": response.name,
         "full_name": response.full_name,
         "github_id": response.id,
-        "github_node_id": response.node_id,
+        "github_node_id": response.raw_data["node_id"],
         "raw": response.raw_data,
         "url": response.url,
         "private": response.private,
