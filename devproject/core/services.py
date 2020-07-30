@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.utils import timezone
 from github import Github, UnknownObjectException, GithubException
 from github.NamedUser import NamedUser
 
@@ -48,8 +49,12 @@ def _parse_get_developer_response(response: NamedUser) -> dict:
         "github_id": response.id,
         "github_node_id": response.node_id,
         "raw": response.raw_data,
-        "created_at": response.created_at,
-        "updated_at": response.updated_at,
+        "created_at": timezone.make_aware(response.created_at)
+        if timezone.is_naive(response.created_at)
+        else response.created_at,
+        "updated_at": timezone.make_aware(response.updated_at)
+        if timezone.is_naive(response.updated_at)
+        else response.updated_at,
     }
 
 

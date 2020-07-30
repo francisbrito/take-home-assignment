@@ -1,5 +1,6 @@
 import factory
 import pytest
+from django.utils.timezone import is_aware
 from github import UnknownObjectException, GithubException, NamedUser
 
 from devproject.core import models
@@ -56,6 +57,19 @@ def test_it_updates_developer_if_its_already_registered(mocker):
     original.refresh_from_db()
 
     assert original.name == updated.name
+
+
+def test_it_ensures_timestamp_fields_are_timezone_aware(mocker):
+    gh_user_response_mock: NamedUser = _create_mock_user_response(
+        mocker, login="francisbrito"
+    )
+    gh_mock = mocker.patch("devproject.core.services._github")
+    gh_mock.get_user = mocker.MagicMock(return_value=gh_user_response_mock)
+
+    developer = sync_developer(login="francisbrito")
+
+    assert is_aware(developer.created_at)
+    assert is_aware(developer.updated_at)
 
 
 def _create_mock_user_response(mocker, **kwargs):
