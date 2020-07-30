@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+
+  database:
+    image: postgres:10-alpine
+    container_name: tesorio_database
+    environment:
+      POSTGRES_DB: tesorio
+      POSTGRES_USER: tesorio
+      POSTGRES_PASSWORD: tesorio
+    ports:
+      - 5436:5432
+
+  cache:
+    image: redis:3
+    container_name: tesorio_cache
+    ports:
+      - 6377:6379
