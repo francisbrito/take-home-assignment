@@ -1,5 +1,3 @@
-import json
-
 from django.conf import settings
 from django.utils import timezone
 from github import (
