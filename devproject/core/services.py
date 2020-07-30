@@ -1,7 +1,12 @@
 from django.conf import settings
 from django.utils import timezone
-from github import Github, UnknownObjectException, GithubException
-from github.NamedUser import NamedUser
+from github import (
+    Github,
+    UnknownObjectException,
+    GithubException,
+    NamedUser,
+    Repository as GithubRepository,
+)
 
 from devproject.core.models import Developer, Repository
 
@@ -58,12 +63,47 @@ def _parse_get_developer_response(response: NamedUser) -> dict:
     }
 
 
-def sync_repository(*, name: str) -> Repository:
+def sync_repository(*, full_name: str) -> Repository:
     """
     Retrieves repository information from Github and creates or updates repository information locally.
-    :param name:
+    :param full_name: Github repository full name.
     :return:
     """
-    # TODO: raise if repository is not found.
-    # TODO: raise if an internal error occurs while syncing.
-    raise NotImplementedError
+    try:
+        response: GithubRepository = _github.get_repo(full_name_or_id=full_name)
+        parsed_response = _parse_get_repository_response(response=response)
+
+        repository = Repository.objects.filter(full_name=full_name).first()
+
+        if repository is None:
+            repository = Repository()
+
+        for attr, value in parsed_response.items():
+            setattr(repository, attr, value)
+
+        repository.save()
+
+        return repository
+    except UnknownObjectException:
+        raise Repository.DoesNotExist
+    except GithubException:
+        raise Repository.UnableToSync
+
+
+def _parse_get_repository_response(response: GithubRepository) -> dict:
+    return {
+        "name": response.name,
+        "full_name": response.full_name,
+        "github_id": response.id,
+        "github_node_id": response.node_id,
+        "raw": response.raw_data,
+        "url": response.url,
+        "private": response.private,
+        "description": response.description,
+        "created_at": timezone.make_aware(response.created_at)
+        if timezone.is_naive(response.created_at)
+        else response.created_at,
+        "updated_at": timezone.make_aware(response.updated_at)
+        if timezone.is_naive(response.updated_at)
+        else response.updated_at,
+    }

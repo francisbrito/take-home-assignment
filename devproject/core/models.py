@@ -79,3 +79,6 @@ class Repository(ValidateOnSaveMixin, GithubEntity):
     description = models.TextField(
         verbose_name=_("Description"), max_length=1000, blank=True, null=True
     )
+
+    class UnableToSync(Exception):
+        pass

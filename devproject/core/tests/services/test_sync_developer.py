@@ -45,9 +45,11 @@ def test_it_registers_developer_if_its_not_registered(mocker):
 
 def test_it_updates_developer_if_its_already_registered(mocker):
     original: models.Developer = Developer.create(
-        login="francisbrito", name="Francis Brito"
+        login="francisbrito", name="Francisco Brito"
     )
-    gh_user_response_mock = _create_mock_user_response(mocker, login="francisbrito")
+    gh_user_response_mock = _create_mock_user_response(
+        mocker, login="francisbrito", name="Francis Brito"
+    )
     gh_mock = mocker.patch("devproject.core.services._github")
     gh_mock.get_user = mocker.MagicMock(return_value=gh_user_response_mock)
     updated = sync_developer(login="francisbrito")

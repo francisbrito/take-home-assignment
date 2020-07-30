@@ -62,3 +62,29 @@ class Developer(factory.DjangoModelFactory):
 
     class Meta:
         model = models.Developer
+
+
+class Repository(factory.DjangoModelFactory):
+    name = LazyAttribute(lambda o: o.full_name.split("/")[1])
+    full_name = Sequence(lambda n: f"repo/repo_{n}")
+    private = False
+    description = None
+    github_id = Sequence(lambda n: 1000 + n)
+    github_node_id = Sequence(lambda n: f"GH_REPO_NODE_ID_{n}")
+    created_at = LazyFunction(timezone.now)
+    updated_at = LazyFunction(timezone.now)
+    url = LazyAttribute(lambda o: f"https://api.github.com/repos/{o.full_name}")
+    raw = LazyAttribute(
+        lambda o: {
+            "name": o.name,
+            "full_name": o.full_name,
+            "id": o.github_id,
+            "node_id": o.github_node_id,
+            "url": o.url,
+            "created_at": o.created_at.isoformat() if o.created_at else None,
+            "updated_at": o.updated_at.isoformat() if o.updated_at else None,
+        }
+    )
+
+    class Meta:
+        model = models.Repository
