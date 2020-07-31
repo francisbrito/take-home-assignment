@@ -108,6 +108,102 @@ Code coverage
     $ coverage run -m pytest
     $ coverage html
     $ open htmlcov/index.html
+    
+Architecture
+------------
+
+Directory Structure
+^^^^^^^^^^^^^^^^^^^
+
+The directory structure was generated using `Django Cookie-Cutter`_ template. It looks as follows:
+
+.. _Django Cookie-Cutter: https://github.com/pydanny/cookiecutter-django
+
+.. code-block:: shell
+
+    .
+    ├── config
+    │   └── settings
+    ├── devproject
+    │   ├── contrib
+    │   │   └── sites
+    │   │       └── migrations
+    │   ├── core
+    │   │   ├── api
+    │   │   ├── management
+    │   │   │   └── commands
+    │   │   ├── migrations
+    │   │   └── tests
+    │   │       ├── selectors
+    │   │       ├── services
+    │   │       └── views
+    │   ├── static
+    │   │   ├── css
+    │   │   ├── fonts
+    │   │   ├── images
+    │   │   │   └── favicons
+    │   │   ├── js
+    │   │   └── sass
+    │   ├── templates
+    │   │   ├── account
+    │   │   ├── pages
+    │   │   └── users
+    │   ├── users
+    │   │   ├── api
+    │   │   ├── migrations
+    │   │   └── tests
+    │   └── utils
+    ├── docs
+    │   └── _source
+    │       └── pycharm
+    │           └── images
+    ├── locale
+    ├── requirements
+    └── utility
+
+Django Applications
+^^^^^^^^^^^^^^^^^^^
+
+The project consists of two Django sub-applications:
+
+``devproject.core``
+~~~~~~~~~~~~~~~~~~~
+
+Holding business logic for "syncing" (scraping) developer and repository information from Github.
+
+``devproject.users``
+~~~~~~~~~~~~~~~~~~~~
+
+
+Holding business logic for managing local users.
+
+Business Logic
+^^^^^^^^^^^^^^
+
+The project follows `HackSoftware's Django Style-guide`_'s convention of storing business-logic-related operations and queries in ``services`` and ``selectors`` functions respectively. e.g:
+
+.. code-block:: python
+
+    # A service function:
+    def sync_developer(*, login: str) -> Developer:
+        """       
+        Retrieves user information from Github and creates or updates developer information locally.
+        :param login:  Github username of the developer
+        :return:      
+        """
+        pass
+    
+    # A selector function:
+    def get_registered_developers() -> "QuerySet[Developer]":
+        """       
+        Retrieves a queryset with all the developers registered locally sorted by login.
+        :return: a Developer queryset.
+        """
+        pass
+
+Please refer to ``devproject/core/services.py`` and ``devproject/core/selectors.py`` for more information on how these functions are implemented.
+
+.. _HackSoftware's Django Style-guide: https://github.com/HackSoftware/Django-Styleguide
 
 Settings
 --------
