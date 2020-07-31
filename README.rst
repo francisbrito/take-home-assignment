@@ -208,15 +208,19 @@ Please refer to ``devproject/core/services.py`` and ``devproject/core/selectors.
 Web API
 ^^^^^^^
 
-The project loosely follows `HackSoftware's Django Style-guide`_'s convention for defining web API views. Please refer to ``devproject/core/api/views.py`` for more information on how view functions are implemented.
+The project loosely follows `HackSoftware's Django Style-guide`_'s convention for defining web API views.
+
+Please refer to ``devproject/core/api/views.py`` for more information on how view functions are implemented.
 
 Documentation
 ~~~~~~~~~~~~~
 
-The project's web API is documented using `OpenAPI Specification`_ (f.k.a Swagger). A developer-friendly renderization of the spec can be viewed by accessing ``http://localhost:8000/api/documentation``.
+The project's web API is documented using `OpenAPI Specification`_ (f.k.a Swagger).
+
+A developer-friendly renderization of the spec can be viewed by accessing ``http://localhost:8000/api/documentation``.
 Here's a preview:
 
-.. image:: https://github.com/francisbrito/tesorio-assignment
+.. image:: https://raw.githubusercontent.com/francisbrito/tesorio-assignment/master/docs/_static/openapi.png
     :target: https://github.com/francisbrito/tesorio-assignment
     :alt: ReDoc
 
