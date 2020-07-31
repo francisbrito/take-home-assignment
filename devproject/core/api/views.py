@@ -9,7 +9,7 @@ from devproject.core.selectors import get_registered_developers
 class Developer(serializers.ModelSerializer):
     class Meta:
         model = models.Developer
-        exclude = ("id", "created_at", "updated_at")
+        exclude = ("id", "created_at", "updated_at", "raw")
 
 
 @method_decorator(
