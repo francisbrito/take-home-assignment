@@ -1,4 +1,4 @@
-Tesorio - Assignment
+Take Home Assignment
 ====================
 
 A take-home assignment for candidates applying for a backend position.
@@ -9,14 +9,14 @@ A take-home assignment for candidates applying for a backend position.
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
      :target: https://github.com/ambv/black
      :alt: Black code style
-.. image:: https://img.shields.io/github/license/francisbrito/tesorio-assignment
-     :target: https://github.com/francisbrito/tesorio-assignment
+.. image:: https://img.shields.io/github/license/francisbrito/take-home-assignment
+     :target: https://github.com/francisbrito/take-home-assignment
      :alt: GitHub
-.. image:: https://img.shields.io/github/languages/top/francisbrito/tesorio-assignment
-     :target: https://github.com/francisbrito/tesorio-assignment
+.. image:: https://img.shields.io/github/languages/top/francisbrito/take-home-assignment
+     :target: https://github.com/francisbrito/take-home-assignment
      :alt: GitHub top language
-.. image:: https://img.shields.io/github/last-commit/francisbrito/tesorio-assignment
-     :target: https://github.com/francisbrito/tesorio-assignment
+.. image:: https://img.shields.io/github/last-commit/francisbrito/take-home-assignment
+     :target: https://github.com/francisbrito/take-home-assignment
      :alt: GitHub last commit
 
 Installation
@@ -42,8 +42,8 @@ Project Setup
 
 .. code-block:: shell
 
-    $ git clone git@github.com:francisbrito/tesorio-assignment.git
-    $ cd tesorio-assignment
+    $ git clone git@github.com:francisbrito/take-home-assignment.git
+    $ cd take-home-assignment
 
 2. Create a virtual-environment_:
 
@@ -220,8 +220,8 @@ The project's web API is documented using `OpenAPI Specification`_ (f.k.a Swagge
 A developer-friendly renderization of the spec can be viewed by accessing ``http://localhost:8000/api/documentation``.
 Here's a preview:
 
-.. image:: https://raw.githubusercontent.com/francisbrito/tesorio-assignment/master/docs/_static/openapi.png
-    :target: https://github.com/francisbrito/tesorio-assignment
+.. image:: https://raw.githubusercontent.com/francisbrito/take-home-assignment/master/docs/_static/openapi.png
+    :target: https://github.com/francisbrito/take-home-assignment
     :alt: ReDoc
 
 .. _`OpenAPI Specification`: https://swagger.io/specification/
