@@ -13,8 +13,10 @@ A take-home assignment for candidates applying for a backend position.
      :target: https://github.com/francisbrito/tesorio-assignment
      :alt: GitHub
 .. image:: https://img.shields.io/github/languages/top/francisbrito/tesorio-assignment
+     :target: https://github.com/francisbrito/tesorio-assignment
      :alt: GitHub top language
 .. image:: https://img.shields.io/github/license/francisbrito/tesorio-assignment
+     :target: https://github.com/francisbrito/tesorio-assignment
      :alt: GitHub
 
 Installation
