@@ -17,3 +17,12 @@ def get_registered_repositories() -> "QuerySet[Repository]":
     :return: a Repository queryset.
     """
     return Repository.objects.all().order_by("full_name")
+
+
+def get_repository_by_full_name(*, full_name: str) -> Repository:
+    """
+    Retrieves a repository by its full_name.
+    :param full_name:
+    :return: a Repository.
+    """
+    return Repository.objects.get(full_name=full_name)  # noqa

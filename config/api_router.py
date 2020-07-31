@@ -17,7 +17,7 @@ schema_view = get_schema_view(
 
 app_name = "api"
 urlpatterns = [
-    path("developers/", include("devproject.core.api.urls")),
+    path("", include("devproject.core.api.urls")),
     path(
         "documentation/",
         schema_view.with_ui("redoc", cache_timeout=0),
