@@ -9,14 +9,11 @@ A take-home assignment for candidates applying for a backend position.
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
      :target: https://github.com/ambv/black
      :alt: Black code style
-
 .. image:: https://img.shields.io/github/license/francisbrito/tesorio-assignment
      :target: https://github.com/francisbrito/tesorio-assignment
      :alt: GitHub
-
 .. image:: https://img.shields.io/github/languages/top/francisbrito/tesorio-assignment
      :alt: GitHub top language
-
 .. image:: https://img.shields.io/github/license/francisbrito/tesorio-assignment
      :alt: GitHub
 
@@ -72,11 +69,43 @@ If not, please make it so by following step 3.
 Running
 -------
 
+In order to run the project, at minimum, the following environment variables must be set:
+
+.. code-block:: shell
+
+    $ export CELERY_BROKER_URL="<REDIS_CONNECTION_STRING>"
+    $ export DATABASE_URL="<POSTGRESQL_CONNECTION_STRING>"
+    $ export GITHUB_ACCESS_TOKEN="<GITHUB_PERSONAL_ACCESS_TOKEN>"
+
+The values for ``CELERY_BROKER_URL`` and ``DATABASE_URL`` can be obtained by following the instructions on how to setup ``redis`` and ``postgresql-server`` respectively.
+Please refer to their documentation for more information.
+
+The value for ``GITHUB_ACCESS_TOKEN`` can be obtained by following this_ instructions
+
+.. _this: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
+
+Local Server
+^^^^^^^^^^^^
+
+.. code-block:: shell
+
+    $ python manage.py runserver_plus
+
 Testing
 -------
 
+.. code-block:: shell
+
+    $ pytest
+
 Code coverage
 ^^^^^^^^^^^^^
+
+.. code-block:: shell
+
+    $ coverage run -m pytest
+    $ coverage html
+    $ open htmlcov/index.html
 
 Settings
 --------
@@ -87,6 +116,56 @@ See settings_ for a list of available environment settings.
 
 Basic Commands
 --------------
+
+Migrations
+^^^^^^^^^^
+
+Creating migrations
+~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: shell
+
+    $ python manage.py makemigrations
+
+Applying migrations
+~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: shell
+
+    $ python manage.py migrate
+
+Syncing
+^^^^^^^
+
+Developers
+~~~~~~~~~~
+
+.. code-block:: shell
+
+    $ python manage.py sync_developers user1 user2 user3 # ...
+
+    # alternatively, in order to sync existing developers
+    $ python manage.py sync_developers --registered
+
+Repositories
+~~~~~~~~~~~~
+
+.. code-block:: shell
+
+    $ python manage.py sync_repositories name1 name2 name2  # ...
+
+    # alternatively, in order to sync existing developers
+    $ python manage.py sync_repositories --registered
+
+
+Periodic Tasks
+^^^^^^^^^^^^^^
+
+In order to setup periodic (cron-like) tasks, run the following command:
+
+.. code-block:: shell
+
+    $ python manage.py setup_periodic_tasks
 
 Setting Up Your Users
 ^^^^^^^^^^^^^^^^^^^^^
