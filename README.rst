@@ -15,9 +15,9 @@ A take-home assignment for candidates applying for a backend position.
 .. image:: https://img.shields.io/github/languages/top/francisbrito/tesorio-assignment
      :target: https://github.com/francisbrito/tesorio-assignment
      :alt: GitHub top language
-.. image:: https://img.shields.io/github/license/francisbrito/tesorio-assignment
+.. image:: https://img.shields.io/github/last-commit/francisbrito/tesorio-assignment
      :target: https://github.com/francisbrito/tesorio-assignment
-     :alt: GitHub
+     :alt: GitHub last commit
 
 Installation
 ------------
@@ -156,7 +156,7 @@ Repositories
 
     $ python manage.py sync_repositories name1 name2 name2  # ...
 
-    # alternatively, in order to sync existing developers
+    # alternatively, in order to sync existing repositories
     $ python manage.py sync_repositories --registered
 
 
