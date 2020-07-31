@@ -108,7 +108,7 @@ Code coverage
     $ coverage run -m pytest
     $ coverage html
     $ open htmlcov/index.html
-    
+
 Architecture
 ------------
 
@@ -186,16 +186,16 @@ The project follows `HackSoftware's Django Style-guide`_'s convention of storing
 
     # A service function:
     def sync_developer(*, login: str) -> Developer:
-        """       
+        """
         Retrieves user information from Github and creates or updates developer information locally.
         :param login:  Github username of the developer
-        :return:      
+        :return:
         """
         pass
-    
+
     # A selector function:
     def get_registered_developers() -> "QuerySet[Developer]":
-        """       
+        """
         Retrieves a queryset with all the developers registered locally sorted by login.
         :return: a Developer queryset.
         """
@@ -204,6 +204,23 @@ The project follows `HackSoftware's Django Style-guide`_'s convention of storing
 Please refer to ``devproject/core/services.py`` and ``devproject/core/selectors.py`` for more information on how these functions are implemented.
 
 .. _HackSoftware's Django Style-guide: https://github.com/HackSoftware/Django-Styleguide
+
+Web API
+^^^^^^^
+
+The project loosely follows `HackSoftware's Django Style-guide`_'s convention for defining web API views. Please refer to ``devproject/core/api/views.py`` for more information on how view functions are implemented.
+
+Documentation
+~~~~~~~~~~~~~
+
+The project's web API is documented using `OpenAPI Specification`_ (f.k.a Swagger). A developer-friendly renderization of the spec can be viewed by accessing ``http://localhost:8000/api/documentation``.
+Here's a preview:
+
+.. image:: https://github.com/francisbrito/tesorio-assignment
+    :target: https://github.com/francisbrito/tesorio-assignment
+    :alt: ReDoc
+
+.. _`OpenAPI Specification`: https://swagger.io/specification/
 
 Settings
 --------
