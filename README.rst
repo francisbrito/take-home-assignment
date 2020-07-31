@@ -1,7 +1,7 @@
-devproject
-==========
+Tesorio - Assignment
+====================
 
-Behold My Awesome Project!
+A take-home assignment for candidates applying for a backend position.
 
 .. image:: https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg
      :target: https://github.com/pydanny/cookiecutter-django/
@@ -10,14 +10,78 @@ Behold My Awesome Project!
      :target: https://github.com/ambv/black
      :alt: Black code style
 
+.. image:: https://img.shields.io/github/license/francisbrito/tesorio-assignment
+     :target: https://github.com/francisbrito/tesorio-assignment
+     :alt: GitHub
 
-:License: MIT
+.. image:: https://img.shields.io/github/languages/top/francisbrito/tesorio-assignment
+     :alt: GitHub top language
 
+.. image:: https://img.shields.io/github/license/francisbrito/tesorio-assignment
+     :alt: GitHub
+
+Installation
+------------
+
+System requirements
+^^^^^^^^^^^^^^^^^^^
+
+* Git_
+* Python_ 3.6+
+* PostgreSQL_ 10.x
+* Redis_ 3.x
+
+.. _Git: https://git-scm.com/
+.. _Python: https://www.python.org/
+.. _PostgreSQL: https://www.postgresql.org/
+.. _Redis: https://redis.io/
+
+Project Setup
+^^^^^^^^^^^^^
+
+1. Clone the project:
+
+.. code-block:: shell
+
+    $ git clone git@github.com:francisbrito/tesorio-assignment.git
+    $ cd tesorio-assignment
+
+2. Create a virtual-environment_:
+
+.. code-block:: shell
+
+    $ python3 -m venv venv
+
+3. Activate the virtual-environment:
+
+.. code-block:: shell
+
+    $ source venv/bin/activate
+
+4. Install dependencies:
+
+.. code-block:: shell
+
+    $ pip install -r requirements/local.txt
+
+.. _virtual-environment: https://docs.python.org/3/tutorial/venv.html
+
+**Important**: from now on, all commands assume the virtual-environment is active.
+If not, please make it so by following step 3.
+
+Running
+-------
+
+Testing
+-------
+
+Code coverage
+^^^^^^^^^^^^^
 
 Settings
 --------
 
-Moved to settings_.
+See settings_ for a list of available environment settings.
 
 .. _settings: http://cookiecutter-django.readthedocs.io/en/latest/settings.html
 
@@ -43,31 +107,6 @@ Running type checks with mypy:
 ::
 
   $ mypy devproject
-
-Test coverage
-^^^^^^^^^^^^^
-
-To run the tests, check your test coverage, and generate an HTML coverage report::
-
-    $ coverage run -m pytest
-    $ coverage html
-    $ open htmlcov/index.html
-
-Running tests with py.test
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-::
-
-  $ pytest
-
-Live reloading and Sass CSS compilation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Moved to `Live reloading and SASS compilation`_.
-
-.. _`Live reloading and SASS compilation`: http://cookiecutter-django.readthedocs.io/en/latest/live-reloading-and-sass-compilation.html
-
-
 
 Celery
 ^^^^^^
@@ -112,14 +151,3 @@ Now you have your own mail server running locally, ready to receive whatever you
 .. _`Download the latest MailHog release`: https://github.com/mailhog/MailHog/releases
 
 .. _mailhog: https://github.com/mailhog/MailHog
-
-
-
-Deployment
-----------
-
-The following details how to deploy this application.
-
-
-
-
